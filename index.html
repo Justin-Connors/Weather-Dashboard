@@ -13,25 +13,27 @@
     <div class="jumbotron jumbotron-fluid bg-primary text-white text-center">
       <div class="container-fluid">
         <h1 class="display-4">Weather Dashboard</h1>
-        <p class="lead small">Search any city to see the weather for the next 5 days!</p>
+        <p class="lead">Search any city to see the weather for the next 5 days!</p>
       </div>
     </div>
     <div class="containter">
       <div class="row">
-        <div class="col-sm-4 bg-light">
-          <h4 class="text-center">Search for a city</h4>
+        <div class="col-4 bg-light">
+          <h4 class="text-center">Search for a city:</h4>
           <div class="input-group">
-            <input type="text" class="form-control" id="searchCity" aria-label="City Search" aria-describedby="search-box">
+            <input type="text form-control-lg" class="form-control rounded" id="searchCity" placeholder="Search here!" aria-label="City Search" aria-describedby="search-box">
             <input class="btn btn-outline-success btn-lg btn-block mt-2" id="searchBtn" type="submit" value="Submit">
           </div>
           <ul class="list-group"></ul>
           <button class="btn btn-outline-danger btn-block mt-2" type="button" id="clear-history">Clear</button>
         </div>
-        <div class="clo-sm-4">
-          <div class="d-flex flex-row">
-            <div class="col-sm-12" id="curWeather">
-              <h3 class="cityName" id="curCity"></h3>
+        <div class="col-8">
+          <div class="d-flex flex-row border border-primary rounded">
+            <div class="col-12" id="curWeather">
+              <h3 class="cityName" id="curCity">Test City Name</h3>
               <p>Temperature: <span class="current" id="temp"></span></p>
+              <p>Wind: <span class="current" id="wind"></span></p>
+              <p>Humidity: <span class="current" id="humidity"></span></p>
           </div>
         </div>
       </div>
