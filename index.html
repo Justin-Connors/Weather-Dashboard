@@ -16,10 +16,9 @@
         <p class="lead small">Search any city to see the weather for the next 5 days!</p>
       </div>
     </div>
-    <!-- todo:  search area -->
     <div class="containter">
-      <div class="d-flex flex-row">
-        <div class="col-sm-3 bg-light">
+      <div class="row">
+        <div class="col-sm-4 bg-light">
           <h4 class="text-center">Search for a city</h4>
           <div class="input-group">
             <input type="text" class="form-control" id="searchCity" aria-label="City Search" aria-describedby="search-box">
@@ -28,12 +27,16 @@
           <ul class="list-group"></ul>
           <button class="btn btn-outline-danger btn-block mt-2" type="button" id="clear-history">Clear</button>
         </div>
+        <div class="clo-sm-4">
+          <div class="d-flex flex-row">
+            <div class="col-sm-12" id="curWeather">
+              <h3 class="cityName" id="curCity"></h3>
+              <p>Temperature: <span class="current" id="temp"></span></p>
+          </div>
+        </div>
       </div>
     </div>
-    <!-- todo:  search history -->
-
-    <!-- todo:  show current day -->
-
+  </div>
     <!-- todo:  5-day forcast display -->
     
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
