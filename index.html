@@ -10,14 +10,15 @@
     <title>Weather Dashboard</title>
   </head>
   <body>
-    <div class="jumbotron jumbotron-fluid bg-primary text-white text-center">
+    <div class="jumbotron bg-primary text-white text-center">
       <div class="container-fluid">
         <h1 class="display-4">Weather Dashboard</h1>
         <p class="lead">Search any city to see the weather for the next 5 days!</p>
       </div>
     </div>
-    <div class="containter">
+    <div class="container-fluid">
       <div class="row">
+        <!-- Search and History -->
         <div class="col-4 bg-light">
           <h4 class="text-center">Search for a city:</h4>
           <div class="input-group">
@@ -27,21 +28,63 @@
           <ul class="list-group"></ul>
           <button class="btn btn-outline-danger btn-block mt-2" type="button" id="clear-history">Clear</button>
         </div>
+        <!-- Current day -->
         <div class="col-8">
-          <div class="d-flex flex-row border border-primary rounded">
+          <div class="row border border-primary rounded ml-2 mr-2">
             <div class="col-12" id="curWeather">
-              <h3 class="cityName" id="curCity">Test City Name</h3>
+              <h3 class="cityName" id="curCity"></h3>
               <p>Temperature: <span class="current" id="temp"></span></p>
               <p>Wind: <span class="current" id="wind"></span></p>
               <p>Humidity: <span class="current" id="humidity"></span></p>
           </div>
         </div>
+      <!-- 5 day forecast -->
+        <div class="col-12 ml-3 pr-4" id="futureForecast">
+          <h3>5-Day Forecast:</h3>
+          <div class="row text-light">
+            <div class="col bg-primary forecast text-white rounded mr-2">
+              <p id="forecastDate1"></p>
+              <p id="forecastImg1"></p>
+              <p>Temp: <span id="forecastTemp1"></span></p>
+              <p>Wind: <span id="wind1"></span></p>
+              <p>Humidity: <span id="humidity1"></span></p>
+            </div>
+            <div class="col bg-primary forecast text-white rounded mr-2">
+              <p id="forecastDate2"></p>
+              <p id="forecastImg2"></p>
+              <p>Temp: <span id="forecastTemp2"></span></p>
+              <p>Wind: <span id="wind2"></span></p>
+              <p>Humidity: <span id="humidity2"></span></p>
+            </div>
+            <div class="col bg-primary forecast text-white rounded mr-2">
+              <p id="forecastDate3"></p>
+              <p id="forecastImg3"></p>
+              <p>Temp: <span id="forecastTemp3"></span></p>
+              <p>Wind: <span id="wind3"></span></p>
+              <p>Humidity: <span id="humidity3"></span></p>
+            </div>
+            <div class="col bg-primary forecast text-white rounded mr-2">
+              <p id="forecastDate4"></p>
+              <p id="forecastImg4"></p>
+              <p>Temp: <span id="forecastTemp4"></span></p>
+              <p>Wind: <span id="wind4"></span></p>
+              <p>Humidity: <span id="humidity4"></span></p>
+            </div>
+            <div class="col bg-primary forecast text-white rounded mr-2">
+              <p id="forecastDate5"></p>
+              <p id="forecastImg5"></p>
+              <p>Temp: <span id="forecastTemp5"></span></p>
+              <p>Wind: <span id="wind5"></span></p>
+              <p>Humidity: <span id="humidity5"></span></p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-    <!-- todo:  5-day forcast display -->
-    
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="assets/script.js"></script>
+
   </body>
 </html>
