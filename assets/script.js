@@ -3,7 +3,7 @@ const APIKey = 'b021cd3fa8ba82e69ade9c4e24ffde08';
 
 //Search/History section HTML elements
 var searchCity = $('#searchCity');
-var clearHistroy = $('#clearHistroy');
+var clearHistory = $('#clearHistory');
 var searchBtn = $('#searchBtn');
 
 // Current day HTML elements
@@ -67,6 +67,7 @@ function converter(city) {
             // Setting items in local storage here to avoid adding empty strings and city names that don't exist
             searchedCity.push(searchCity.val().trim());
             localStorage.setItem('city-name', JSON.stringify(searchedCity));
+            searchHistory();
         }
     })
     .then(function () {
@@ -75,5 +76,11 @@ function converter(city) {
 }
 
 function searchHistory() {
-    
+    $.each(storedCities, function(index, value) {
+        var listEl = $(`<li>${value}</li>`);
+        $(listEl).attr("class", "list-group-item btn btn-block mt-2");
+        $(".list-group").append(listEl);
+    });
 }
+
+searchHistory();
