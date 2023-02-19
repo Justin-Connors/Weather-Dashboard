@@ -15,6 +15,7 @@ var curHumidity = $('#curHumidity');
 
 // Empty array to hold searched cities
 var searchedCity = [];
+var storedCities = JSON.parse(localStorage.getItem('city-name'));
 
 // Initializing cords
 var cord = {
@@ -32,7 +33,7 @@ function disWeatherSearch(e) {
         converter(searchCity.val().trim());
     } else {
         alert("Please enter a city name");
-    } 
+    }
 }
 
 // Grabbing API data
@@ -63,9 +64,16 @@ function converter(city) {
             cord.lon = data[0].lon;
             cord.lat = data[0].lat;
             console.log(data);
+            // Setting items in local storage here to avoid adding empty strings and city names that don't exist
+            searchedCity.push(searchCity.val().trim());
+            localStorage.setItem('city-name', JSON.stringify(searchedCity));
         }
     })
     .then(function () {
         currWeather();
     })
+}
+
+function searchHistory() {
+    
 }
