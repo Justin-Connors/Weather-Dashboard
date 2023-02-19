@@ -25,6 +25,7 @@ var cord = {
 
 // Buttons
 $('#searchBtn').on('click', disWeatherSearch);
+$('#clearHistory').on('click', clearSearchHistory);
 
 // Display search
 function disWeatherSearch(e) {
@@ -67,7 +68,6 @@ function converter(city) {
             // Setting items in local storage here to avoid adding empty strings and city names that don't exist
             searchedCity.push(searchCity.val().trim());
             localStorage.setItem('city-name', JSON.stringify(searchedCity));
-            searchHistory();
         }
     })
     .then(function () {
@@ -86,3 +86,7 @@ function searchHistory() {
 }
 
 searchHistory();
+
+function clearSearchHistory() {
+    localStorage.clear();
+}
