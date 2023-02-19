@@ -77,7 +77,9 @@ function converter(city) {
 
 function searchHistory() {
     $.each(storedCities, function(index, value) {
-        var listEl = $(`<li>${value}</li>`);
+        //Getting value of index and setting first character to uppercase
+        var listEl = $(`<li>${value.charAt(0).toUpperCase() + this.slice(1)}</li>`);
+
         $(listEl).attr("class", "list-group-item btn btn-block mt-2");
         $(".list-group").append(listEl);
     });
