@@ -13,8 +13,6 @@ var curTemp = $('#curTemp');
 var curWind = $('#curWind');
 var curHumidity = $('#curHumidity');
 
-// Empty array to hold searched cities
-var searchedCity = [];
 var storedCities = JSON.parse(localStorage.getItem('city-name'));
 
 // Initializing cords
@@ -30,6 +28,7 @@ $('#clearHistory').on('click', clearSearchHistory);
 // Display search
 function disWeatherSearch(e) {
     e.preventDefault();
+    searchHistory();
     if(searchCity.val().trim() !== "") {
         converter(searchCity.val().trim());
     } else {
@@ -64,10 +63,11 @@ function converter(city) {
         } else {
             cord.lon = data[0].lon;
             cord.lat = data[0].lat;
-            console.log(data);
+            // console.log(data);
             // Setting items in local storage here to avoid adding empty strings and city names that don't exist
-            searchedCity.push(searchCity.val().trim());
-            localStorage.setItem('city-name', JSON.stringify(searchedCity));
+            storedCities = storedCities || [];
+            storedCities.push(searchCity.val().trim());
+            localStorage.setItem('city-name', JSON.stringify(storedCities)); 
         }
     })
     .then(function () {
@@ -76,17 +76,23 @@ function converter(city) {
 }
 
 function searchHistory() {
-    $.each(storedCities, function(index, value) {
-        //Getting value of index and setting first character to uppercase
-        var listEl = $(`<li>${value.charAt(0).toUpperCase() + this.slice(1)}</li>`);
-
-        $(listEl).attr("class", "list-group-item btn btn-block mt-2");
+     
+    for (let i = 0; i < storedCities.length; i++) {
+        var listEl = $(`<li>${storedCities[i]}</li>`);
+        $(listEl).attr('class', 'list-group-item-' + [i] + ' btn btn-block mt-2');
         $(".list-group").append(listEl);
-    });
+
+        $('.list-group-item-' + [i]).on("click", function() {
+            console.log("ive been clicked ", storedCities[i]);
+        })
+    }
+       
 }
 
 searchHistory();
 
-function clearSearchHistory() {
+function clearSearchHistory(e) {
+    e.preventDefault();
     localStorage.clear();
+    document.location.reload();
 }
