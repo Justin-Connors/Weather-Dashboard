@@ -54,6 +54,7 @@ function currWeather() {
         $(curTemp).html(data.list[5].main.temp + '°C');
         $(curWind).html(data.list[5].wind.speed + ' kph');
         $(curHumidity).html(data.list[5].main.humidity + '%');
+        fiveDay(data);
     })
 }
 
@@ -91,6 +92,22 @@ function searchHistory() {
         $('.list-group-item-' + [i]).on("click", function() {
             converter(storedCities[i]);
         })
+    }
+}
+
+function fiveDay(data) {
+    console.log(data);
+    for (let i = 0; i < data.list.length; i++) {
+        var iconCode = data.list[i].weather[0].icon;
+        var imgEl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+
+        if(data.list[i].dt_txt.search('12:00:00')) {
+            $('#forecastTemp' + [i]).html(data.list[i].main.temp + '°C');
+            $('#wind' + [i]).html(data.list[i].wind.speed + ' kph');
+            $('#humidity' + [i]).html(data.list[i].main.humidity + '%');
+            $('#forecastImg' + [i]).attr('src', imgEl);
+        }
+
     }
 }
 
