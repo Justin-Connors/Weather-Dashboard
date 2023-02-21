@@ -32,10 +32,11 @@ $('#clearHistory').on('click', clearSearchHistory);
 // Display search
 function disWeatherSearch(e) {
     e.preventDefault();
-    searchHistory();
     if(searchCity.val().trim() !== "") {
         converter(searchCity.val().trim());
         saveCitySearch();
+        newList();
+        searchHistory();
     } else {
         alert("Please enter a city name");
     }
@@ -87,14 +88,15 @@ function searchHistory() {
         var listEl = $(`<li>${storedCities[i]}</li>`);
         $(listEl).attr('class', 'list-group-item-' + [i] + ' btn btn-block mt-2');
         $(".list-group").append(listEl);
-
         $('.list-group-item-' + [i]).on("click", function() {
             converter(storedCities[i]);
         })
     }
 }
 
-// $('.list-group-item').remove();
+function newList() {
+    $('.list-group > *').remove();
+}
 
 searchHistory();
 
