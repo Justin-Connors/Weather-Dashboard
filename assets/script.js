@@ -15,6 +15,10 @@ var curHumidity = $('#curHumidity');
 
 var storedCities = JSON.parse(localStorage.getItem('city-name'));
 
+if(!storedCities) {
+    storedCities = [];
+}
+
 // Initializing cords
 var cord = {
     lon: 0,
@@ -31,6 +35,7 @@ function disWeatherSearch(e) {
     searchHistory();
     if(searchCity.val().trim() !== "") {
         converter(searchCity.val().trim());
+        saveCitySearch();
     } else {
         alert("Please enter a city name");
     }
@@ -64,10 +69,6 @@ function converter(city) {
             cord.lon = data[0].lon;
             cord.lat = data[0].lat;
             // console.log(data);
-            // Setting items in local storage here to avoid adding empty strings and city names that don't exist
-            storedCities = storedCities || [];
-            storedCities.push(searchCity.val().trim());
-            localStorage.setItem('city-name', JSON.stringify(storedCities)); 
         }
     })
     .then(function () {
@@ -75,19 +76,25 @@ function converter(city) {
     })
 }
 
+function saveCitySearch() {
+    storedCities.push(searchCity.val().trim());
+    localStorage.setItem('city-name', JSON.stringify(storedCities)); 
+}
+
 function searchHistory() {
-     
+    // console.log(storedCities);
     for (let i = 0; i < storedCities.length; i++) {
         var listEl = $(`<li>${storedCities[i]}</li>`);
         $(listEl).attr('class', 'list-group-item-' + [i] + ' btn btn-block mt-2');
         $(".list-group").append(listEl);
 
         $('.list-group-item-' + [i]).on("click", function() {
-            console.log("ive been clicked ", storedCities[i]);
+            converter(storedCities[i]);
         })
     }
-       
 }
+
+// $('.list-group-item').remove();
 
 searchHistory();
 
