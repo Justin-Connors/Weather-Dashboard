@@ -49,7 +49,7 @@ function currWeather() {
         return response.json();
     })
     .then(function (data) {
-        console.log(data);
+        // console.log(data);
         $(curCity).html(data.city.name);
         $(curTemp).html(data.list[5].main.temp + '°C');
         $(curWind).html(data.list[5].wind.speed + ' kph');
@@ -87,6 +87,7 @@ function searchHistory() {
     // console.log(storedCities);
     for (let i = 0; i < storedCities.length; i++) {
         var listEl = $(`<li>${storedCities[i]}</li>`);
+
         $(listEl).attr('class', 'list-group-item-' + [i] + ' btn btn-block mt-2');
         $(".list-group").append(listEl);
         $('.list-group-item-' + [i]).on("click", function() {
@@ -97,17 +98,20 @@ function searchHistory() {
 
 function fiveDay(data) {
     console.log(data);
+    var counter = 0;
     for (let i = 0; i < data.list.length; i++) {
+        
         var iconCode = data.list[i].weather[0].icon;
         var imgEl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
 
-        if(data.list[i].dt_txt.search('12:00:00')) {
-            $('#forecastTemp' + [i]).html(data.list[i].main.temp + '°C');
-            $('#wind' + [i]).html(data.list[i].wind.speed + ' kph');
-            $('#humidity' + [i]).html(data.list[i].main.humidity + '%');
-            $('#forecastImg' + [i]).attr('src', imgEl);
-        }
-
+            if(data.list[i].dt_txt.includes('12:00:00')) {
+                counter++
+                $('#forecastDate' + counter).html(data.list[i].dt_txt.slice(0, 10));
+                $('#forecastTemp' + counter).html(data.list[i].main.temp + '°C');
+                $('#wind' + counter).html(data.list[i].wind.speed + ' kph');
+                $('#humidity' + counter).html(data.list[i].main.humidity + '%');
+                $('#forecastImg' + counter).attr('src', imgEl);
+            }
     }
 }
 
