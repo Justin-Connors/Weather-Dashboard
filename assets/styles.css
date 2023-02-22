@@ -1,0 +1,21 @@
+.forecast {
+    text-align: center;
+}
+
+#forecastDate1, #forecastDate2, #forecastDate3, #forecastDate4, #forecastDate5 {
+    font-size: 150%;
+    font-weight: 400;
+    margin-top: 10px;
+}
+
+#forecastTemp1, #forecastTemp2, #forecastTemp3, #forecastTemp4, #forecastTemp5,
+#wind1, #wind2, #wind3, #wind4, #wind5,
+#humidity1, #humidity2, #humidity3, #humidity4, #humidity5, p {
+    font-size: 110%;
+    font-family: Geneva, Verdana, sans-serif;
+}
+
+
+.search {
+    
+}
