@@ -50,7 +50,7 @@ function currWeather() {
     })
     .then(function (data) {
         // console.log(data);
-        $(curCity).html(data.city.name);
+        $(curCity).html(data.city.name + " " + data.list[0].dt_txt.slice(0, 10));
         $(curTemp).html(data.list[5].main.temp + '°C');
         $(curWind).html(data.list[5].wind.speed + ' kph');
         $(curHumidity).html(data.list[5].main.humidity + '%');
