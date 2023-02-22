@@ -60,7 +60,7 @@ function currWeather() {
 
 // City name to lon/lat
 function converter(city) {
-    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${APIKey}`)
+    fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${APIKey}`)
     .then(function (response) {
         return response.json();
     })
